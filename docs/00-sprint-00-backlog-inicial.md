@@ -6,7 +6,7 @@ Instrucciones:
 - Ordénalas por prioridad (1 = más importante).
 
 1. Como vendedor quiero identificarme en el sistema para poder completar las ventas con los clientes.
-2. Como vendedor quiero ver la lista de productos para agregar al carrito de compra de un cliente cuando no conozco el nombre exacto del producto.
+2. Como vendedor quiero ver la lista de productos para armar el carrito sin necesitar el nombre exacto del producto.
 3. Como vendedor quiero poder filtrar la lista de productos para agregar directamente el producto del que ya sé el nombre exacto al carrito de compra.
 4. Como vendedor quiero modificar las cantidades y quitar productos del carrito del cliente para completar la venta a un cliente.
 5. Como vendedor quiero registrar clientes para poder ofrecerles el beneficio del descuento por ventas acumuladas.
