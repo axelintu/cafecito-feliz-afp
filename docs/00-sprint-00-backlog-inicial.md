@@ -14,7 +14,5 @@ Instrucciones:
 7. Como vendedor quiero ver el subtotal, el descuento aplicado y total de la compra para cobrarle al cliente por su compra.
 8. Como vendedor quiero que al completar una venta se registre en el sistema para que la cafetería tenga guardado un historial de ventas.
 9. Como vendedor quiero generar un ticket para entregar al cliente su comprobante de venta.
-10. Como administrador quiero crear productos para tener el catálogo actualizado acorde a los cambios en el menú.
-11. Como administrador quiero editar productos para mantener el catálogo actualizado según los cambios del menú y stock.
-12. Como administrador quiero desactivar productos para que el menú refleje los productos que tenemos a la venta cuando desaparezcan dichos productos.
-13. Como administrador quiero que la gestión del catálogo esté restringida a mi rol para evitar cambios no autorizados en el menú.
+10. Como administrador quiero crear y editar productos para mantener el catálogo actualizado según los cambios del menú y del stock.
+11. Como administrador quiero desactivar productos para que el menú refleje los productos que tenemos a la venta cuando desaparezcan dichos productos.
