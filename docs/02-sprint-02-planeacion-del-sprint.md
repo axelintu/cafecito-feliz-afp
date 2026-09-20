@@ -30,25 +30,25 @@ Sprint seleccionado:
 - Historia 5 (5 pts)
 - Historia 6 (3 pts)
 
-Total puntos del sprint: 18
+Total puntos del sprint: 18 de 20
 
 Justificación:
 ¿Por qué estas historias y no otras?
+
+Historia ancla:
+
+Es la #2 (ver la lista de productos) = 2 puntos, porque es consumir un endpoint ya definido y mostrarlo en pantalla, sin más lógica. Todo lo demás se compara con esto. Escala: 1, 2, 3, 5, 8, 13; Si hay duda se escoge el siguiente en la escala. Se mide la complejidad, riesgos y desconocimiento.
 
 Las que sí entran:
 
 1. Desbloquea las demás historias: Para todas las historias de ventas se ocupa login de vendedor (historias 2, 3, 4, 5, 6, 7, 8, 9), y para mantener el catálogo (historias 10 y 11), se requieren los permisos que da el login.
 2. La historia 2 es requisito para filtrar (3), agregar al carrito y modificar el carrito (4).
 3. La historia 5 es requisito de la historia 6: buscar al cliente y enlazarlo con la compra, y para la historia 7: darle el descuento apropiado.
-4. La historia 6 se deja aunque en este sprint no la consuma ninguna otra en este sprint porque va de la mano de la historia 5, se registra a un cliente para enlazarlo con ventas/carritos para uso futuro en historias con más lógica de negocio (descuentos, validación de stock, etc).
-5. Con estas historias se tiene algo usable de principio a fin. Al final se tiene casi todo el proceso de una venta, el vendedor puede hacer login, ver catálogo, buscar un producto, registrar a un cliente frecuente y volver a encontrarlo después para enlzaralo a una venta.
+4. La historia 6 se deja aunque en este sprint no la consuma ninguna otra porque va de la mano de la historia 5, se registra a un cliente para enlazarlo con ventas/carritos para uso futuro en historias con más lógica de negocio (descuentos, validación de stock, etc).
+5. Con estas historias se tiene algo usable de principio a fin. Al final se tiene casi todo el proceso de una venta, el vendedor puede hacer login, ver catálogo, buscar un producto, registrar a un cliente frecuente y volver a encontrarlo después para enlazarlo a una venta.
 6. Con estas historias se trabaja verticalmente, backend, frontend y su integración, y por tanto se tiene usabilidad completa, no solo algo funcional de la API que no se consume desde el frontend, ni algo bonito que no tiene funcionalidad en el front end.
 
-El total de puntos es 18, quedan dos puntos de margen, es deliberado, la única que cabría es desactivar productos en admin (10), pero va de la mano con la historia 10, eso queda mejor en otro sprint para trabajarse juntas y dar ese valor en ese sprint.
-
-Historia ancla:
-
-Es la #2 (ver la lista de productos) = 2 puntos, porque consumir un endpoint ya definido y mostrarlo en pantalla, sin más lógica. Todo lo demás se compara con esto. Escala: 1, 2, 3, 5, 8, 3; Si hay duda se escoge el siguiente en la escala. Se mide la complejidad, riesgos y desconocimiento.
+El total de puntos es 18, quedan dos puntos de margen, es a propósito para mantenerse debajo del límite 20, la única que cabría es desactivar productos en admin (11), pero va de la mano con la historia 10, eso queda mejor en otro sprint para trabajarse juntas y dar ese valor en ese sprint.
 
 ¿Por qué no se escogen las demás historias para este Sprint?
 
