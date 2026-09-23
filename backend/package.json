@@ -1,0 +1,35 @@
+{
+  "name": "cafecito-feliz-backend",
+  "version": "1.0.0",
+  "description": "API for Cafecito Feliz POS",
+  "homepage": "https://github.com/axelintu/cafecito-feliz-afp#readme",
+  "bugs": {
+    "url": "https://github.com/axelintu/cafecito-feliz-afp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axelintu/cafecito-feliz-afp.git"
+  },
+  "license": "MIT",
+  "author": "Alejandro Flores (@axelintu)",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "seed": "node src/config/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.1"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
