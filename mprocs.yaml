@@ -1,0 +1,7 @@
+procs:
+  ui:
+    shell: npm run dev
+    cwd: frontend
+  api:
+    shell: npm run dev
+    cwd: backend
