@@ -73,11 +73,13 @@ Este es un monorepo del proyecto de punto de venta Cafecito Feliz con los proyec
 ## Configurar variables
 
 En el directorio backend/, crea archivo .env
+
 ```
 cp .env.example .env
 ```
 
 Modifica estas variables de entorno:
+
 ```
 PORT=3001
 FRONTEND_URL=http://localhost:3000
@@ -85,7 +87,7 @@ MONGODB_URI=mongodb://localhost:27017/cafecito-pos
 NODE_ENV=development
 ```
 
-En desarrollo la API vive en http://localhost:3001/api. La raíz, 
+En desarrollo la API vive en http://localhost:3001/api. La raíz,
 http://localhost:3001/, responde 404 a propósito: no hay ruta declarada ahí.
 
 En el directorio frontend/, crea archivo .env
@@ -93,13 +95,14 @@ En el directorio frontend/, crea archivo .env
 ```
 cp .env.example .env
 ```
+
 Modifica la variable de entorno:
 
 ```
 VITE_API_URL=http://localhost:3001/api
 ```
 
-En el frontend todo lo que empieza con `VITE_` aparece público porque se agrega 
+En el frontend todo lo que empieza con `VITE_` aparece público porque se agrega
 al bundle del build, ahí no se agregan secretos.
 
 ## Correr el proyecto
@@ -116,7 +119,7 @@ Para levantar el proyecto backend:
 cd backend && npm run dev
 ```
 
-Para correr ambos en la misma terminal puedes usar mprocs desde la raíz del monorepo: 
+Para correr ambos en la misma terminal puedes usar mprocs desde la raíz del monorepo:
 
 Instala la dependencia y corre desde la raíz:
 
