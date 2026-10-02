@@ -1,10 +1,13 @@
 {
   "name": "cafecito-feliz",
   "devDependencies": {
-    "mprocs": "^0.9.6"
+    "mprocs": "^0.9.6",
+    "prettier": "^3.9.9"
   },
   "scripts": {
-    "dev": "mprocs"
+    "dev": "mprocs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "private": true
 }
