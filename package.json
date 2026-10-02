@@ -1,4 +1,5 @@
 {
+  "name": "cafecito-feliz",
   "devDependencies": {
     "mprocs": "^0.9.6"
   },
