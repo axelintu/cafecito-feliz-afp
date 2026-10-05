@@ -1,7 +1,11 @@
+# exec instead of npm run dev: npm doesn't pass the stop signal, so vite and
+# nodemon kept running and holding their ports after closing mprocs.
+# If an app's dev script changes, update it here too.
 procs:
   ui:
-    shell: npm run dev
+    shell: exec ./node_modules/.bin/vite
     cwd: frontend
   api:
-    shell: npm run dev
+    shell: exec ./node_modules/.bin/nodemon app.js
     cwd: backend
+    stop: SIGINT
