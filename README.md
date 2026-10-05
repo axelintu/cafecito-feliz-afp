@@ -8,6 +8,7 @@ Este es un monorepo del proyecto de punto de venta Cafecito Feliz con los proyec
 ├── backend
 │   ├── .env.example
 │   ├── app.js
+│   ├── eslint.config.js
 │   ├── package.json
 │   ├── package-lock.json
 │   └── src
@@ -123,6 +124,29 @@ Instala la dependencia y corre desde la raíz:
 ```shell
 npm i
 npm run dev
+```
+
+## Estilo de código
+
+Cada app tiene su propio ESLint con reglas de
+[ESLint Stylistic](https://eslint.style):
+
+- Comillas simples en JavaScript; dobles en atributos JSX.
+- Punto y coma al final de cada sentencia de código.
+- 80 caracteres por línea como sugerencia: el lint avisa, pero no falla.
+
+El acomodo de las líneas queda a criterio de quien escribe, se prioriza la lectura del código; no hay formateador.
+
+Revisar, desde `backend/` o `frontend/`:
+
+```
+npm run lint
+```
+
+Corregir lo que se puede arreglar en automático:
+
+```
+npx eslint . --fix
 ```
 
 ## Dónde reportar errores
