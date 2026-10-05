@@ -20,8 +20,11 @@ const seed = async () => {
 
 		const inserted = await Product.insertMany(products);
 		console.log(`Productos insertados: ${inserted.length}`);
-		for (const product of inserted) {
-			console.log(`  ${product.name} — $${product.price} — stock ${product.stock}${product.isActive ? '' : ' — inactivo'}`);
+		for (const p of inserted) {
+			const status = p.isActive ? '' : ' — inactivo';
+			console.log(
+				`  ${p.name} — $${p.price} — stock ${p.stock}${status}`
+			);
 		}
 
 		console.log('Seed completado.');
