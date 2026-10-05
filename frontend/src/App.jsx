@@ -10,14 +10,14 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/ventas' element={<Ventas />} />
-          <Route path='/productos' element={<Productos />} />
-          <Route path='/clientes' element={<Clientes />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/ventas" element={<Ventas />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route path="/clientes" element={<Clientes />} />
         </Routes>
       </Layout>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

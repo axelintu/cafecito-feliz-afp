@@ -2,10 +2,10 @@ import Header from './Header.jsx';
 import './Layout.css';
 
 function Layout({ children }) {
-  return <div className='layout'>
+  return <div className="layout">
     <Header />
     {children}
-  </div>
+  </div>;
 }
 
 export default Layout;
