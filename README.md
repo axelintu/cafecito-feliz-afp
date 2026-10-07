@@ -37,14 +37,14 @@ Este es un monorepo del proyecto de punto de venta Cafecito Feliz con los proyec
 │   │   │   └── Layout.jsx
 │   │   ├── main.jsx
 │   │   ├── pages
-│   │   │   ├── Clientes
-│   │   │   │   └── Clientes.jsx
+│   │   │   ├── Customers
+│   │   │   │   └── Customers.jsx
 │   │   │   ├── Home
 │   │   │   │   └── Home.jsx
-│   │   │   ├── Productos
-│   │   │   │   └── Productos.jsx
-│   │   │   └── Ventas
-│   │   │       └── Ventas.jsx
+│   │   │   ├── Products
+│   │   │   │   └── Products.jsx
+│   │   │   └── Sales
+│   │   │       └── Sales.jsx
 │   │   ├── services
 │   │   │   └── apiClient.js
 │   │   └── styles
