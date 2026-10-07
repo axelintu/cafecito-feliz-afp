@@ -1,7 +1,7 @@
-function Ventas() {
+function Sales() {
   return (
     <h1>Ventas</h1>
   );
 }
 
-export default Ventas;
+export default Sales;

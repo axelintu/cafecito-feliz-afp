@@ -1,7 +1,7 @@
-function Productos() {
+function Products() {
   return (
     <h1>Productos</h1>
   );
 }
 
-export default Productos;
+export default Products;

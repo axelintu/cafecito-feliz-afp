@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
 import Home from './pages/Home/Home.jsx';
-import Ventas from './pages/Sales/Sales.jsx';
+import Customers from './pages/Customers/Customers.jsx';
+import Products from './pages/Products/Products.jsx';
+import Sales from './pages/Sales/Sales.jsx';
 import Layout from './layout/Layout.jsx';
-import Productos from './pages/Products/Products.jsx';
-import Clientes from './pages/Customers/Customers.jsx';
 
 function App() {
   return (
@@ -11,9 +11,9 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/ventas" element={<Ventas />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/clientes" element={<Clientes />} />
+          <Route path="/ventas" element={<Sales />} />
+          <Route path="/productos" element={<Products />} />
+          <Route path="/clientes" element={<Customers />} />
         </Routes>
       </Layout>
     </BrowserRouter>
