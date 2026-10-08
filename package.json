@@ -1,10 +1,12 @@
 {
   "name": "cafecito-feliz",
   "devDependencies": {
+    "@usebruno/cli": "^4.2.1",
     "mprocs": "^0.9.6"
   },
   "scripts": {
-    "dev": "mprocs"
+    "dev": "mprocs",
+    "test:api": "cd bruno && bru run --env local"
   },
   "private": true
 }
