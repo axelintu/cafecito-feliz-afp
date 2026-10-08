@@ -149,6 +149,18 @@ Corregir lo que se puede arreglar en automático:
 npx eslint . --fix
 ```
 
+## Proceso de los issues
+
+Cada historia de usuario (en la rama entregables, carpeta docs/) es un issue en el repo, con sus propios criterios de aceptación. Sin ellos una historia no se puede pasar a "In Progress".
+
+El número del issue no coincide con el de la historia, porque los PR comparten la numeración con los issues. Cada issue se titula `Historia <N>: <nombre>`; para saber qué número poner en el PR, busca la historia por su título en los issues o en el tablero. Por ejemplo, la Historia 1 (login) es el issue #2.
+
+Cada historia se trabaja en su rama `feature/<historia-del-backlog-en-infinitivo>` y se integra mediante un PR. En la descripción del PR se pone `Closes #<issue>`, por ejemplo `Closes #2` para la historia del login. Al mergear, GitHub cierra el issue y el [tablero de GitHub Projects](https://github.com/users/axelintu/projects/1/) lo pasa a Done.
+
+Los cambios que no son historias (`chore/`, `fix/`, `docs/`) también entran por PR, pero sin `Closes`.
+
+Los merges se hacen con merge commit, no squash, para mantener el historial de los commits.
+
 ## Dónde reportar errores
 
 https://github.com/axelintu/cafecito-feliz-afp/issues
