@@ -20,6 +20,14 @@ Este es un monorepo del proyecto de punto de venta Cafecito Feliz con los proyec
 │       │   └── Product.js
 │       ├── routes
 │       └── services
+├── bruno
+│   ├── auth
+│   ├── bruno.json
+│   ├── collection.bru
+│   ├── environments
+│   │   └── local.bru
+│   ├── health.bru
+│   └── not-found.bru
 ├── frontend
 │   ├── .env.example
 │   ├── eslint.config.js
@@ -125,6 +133,30 @@ Instala la dependencia y corre desde la raíz:
 npm i
 npm run dev
 ```
+
+## Probar la API
+
+Los requests de la API están en una colección de [Bruno](https://www.usebruno.com)
+en `bruno/`, con un archivo por caso: el exitoso y uno por cada error de los
+criterios de la historia. Para usarla, abre la carpeta en Bruno
+(Open Collection) y elige el environment `local`. Corre primero
+`auth/Login seller`: guarda el token y los demás requests lo usan.
+
+Para correr toda la colección desde la terminal, con el backend levantado y
+las dependencias de la raíz instaladas (`npm i`), desde la raíz:
+
+```shell
+npm run test:api
+```
+
+Para correr solo una carpeta o un request, agrega su ruta dentro de `bruno/`:
+
+```shell
+npm run test:api -- auth
+npm run test:api -- health.bru
+```
+
+Cada request trae sus tests; si alguno falla, el comando termina con error.
 
 ## Estilo de código
 

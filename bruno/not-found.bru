@@ -1,0 +1,19 @@
+meta {
+  name: Not found
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/does-not-exist
+  body: none
+  auth: none
+}
+
+tests {
+  test("responds 404 with a JSON error", function () {
+    expect(res.status).to.equal(404);
+    expect(res.headers["content-type"]).to.include("application/json");
+    expect(res.body.error).to.be.a("string");
+  });
+}
