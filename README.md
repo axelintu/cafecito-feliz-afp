@@ -92,6 +92,14 @@ PORT=3001
 FRONTEND_URL=http://localhost:3000
 MONGODB_URI=mongodb://localhost:27017/cafecito-pos
 NODE_ENV=development
+JWT_SECRET=agrega-tu-secreto
+JWT_EXPIRES_IN=8h
+```
+
+Genera el secreto del JWT_SECRET para `.env`. Debes generarlo en cada máquina usando este comando:
+
+```
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 ```
 
 En desarrollo la API vive en http://localhost:3001/api. La raíz, 
