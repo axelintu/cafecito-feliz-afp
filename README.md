@@ -14,7 +14,8 @@ Este es un monorepo del proyecto de punto de venta Cafecito Feliz con los proyec
 │   └── src
 │       ├── config
 │       │   ├── db.conf.js
-│       │   └── seed.js
+│       │   ├── seed.js
+│       │   └── userSeed.js
 │       ├── controllers
 │       ├── models
 │       │   └── Product.js
@@ -77,7 +78,8 @@ Este es un monorepo del proyecto de punto de venta Cafecito Feliz con los proyec
 
 - Backend: `cd backend && npm i`
 - Frontend: `cd frontend && npm i`
-- Script para llenar la base de datos: `cd backend && npm run seed`.
+- Script para llenar los productos de la base de datos: `cd backend && npm run seed`.
+- Script para llenar los usuarios de la base de datos: `cd backend && npm run seed:users`.
 
 ## Configurar variables
 
@@ -94,6 +96,8 @@ MONGODB_URI=mongodb://localhost:27017/cafecito-pos
 NODE_ENV=development
 JWT_SECRET=agrega-tu-secreto
 JWT_EXPIRES_IN=8h
+SEED_SELLER_PASSWORD=cambia-esta-contrasena
+SEED_ADMIN_PASSWORD=cambia-esta-contrasena
 ```
 
 Genera el secreto del JWT_SECRET para `.env`. Debes generarlo en cada máquina usando este comando:
@@ -101,6 +105,8 @@ Genera el secreto del JWT_SECRET para `.env`. Debes generarlo en cada máquina u
 ```
 node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 ```
+
+Agrega las contraseñas que se usarán para las pruebas en SEED_SELLER_PASSWORD y SEED_ADMIN_PASSWORD al archivo .env, para popular con el seed.
 
 En desarrollo la API vive en http://localhost:3001/api. La raíz, 
 http://localhost:3001/, responde 404 a propósito: no hay ruta declarada ahí.
