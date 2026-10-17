@@ -4,6 +4,7 @@ import cors from 'cors';
 import connectDB from './src/config/db.conf.js';
 import notFound from './src/middleware/notFound.js';
 import errorHandler from './src/middleware/errorHandler.js';
+import logger from './src/middleware/logger.js';
 
 const app = express();
 
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3001;
 app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 app.use(express.json());
+app.use(logger);
 
 await connectDB();
 
