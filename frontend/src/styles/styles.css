@@ -29,3 +29,8 @@ h1.cafecito-logo {
 	border: 0;
 }
 
+/* Login */
+.login-container {
+	max-width: 600px;
+	margin: 0 auto;
+}
