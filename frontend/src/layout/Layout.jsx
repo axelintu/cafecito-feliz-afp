@@ -1,11 +1,12 @@
 import Header from './Header.jsx';
-import './Layout.css';
 
 function Layout({ children }) {
-  return <div className="layout">
+  return <>
     <Header />
-    {children}
-  </div>;
+    <div className="page-container container">
+      {children}
+    </div>
+  </>;
 }
 
 export default Layout;
