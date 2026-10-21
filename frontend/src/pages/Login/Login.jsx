@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { login as loginService } from '../../services/authService.js';
+import { saveToken } from '../../utils/auth.js';
 import { ERROR_MESSAGES } from '../../constants/errorMessages.js';
 
 function Login() {
@@ -12,7 +13,8 @@ function Login() {
     setErrorMessage('');
 
     try {
-      await loginService({ email, password });
+      const { token } = await loginService({ email, password });
+      saveToken(token);
     } catch (err) {
       handleLoginError(err);
     }
