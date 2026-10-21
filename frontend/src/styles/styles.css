@@ -34,3 +34,10 @@ h1.cafecito-logo {
 	max-width: 600px;
 	margin: 0 auto;
 }
+
+.login-container [role="alert"] {
+	background-color: var(--pico-form-element-invalid-active-border-color);
+	color: white;
+	padding: 1em;
+	margin-bottom: 1.5em;
+}

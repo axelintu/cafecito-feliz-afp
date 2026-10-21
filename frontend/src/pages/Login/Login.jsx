@@ -1,16 +1,40 @@
 import { useState } from 'react';
+import { login as loginService } from '../../services/authService.js';
+import { ERROR_MESSAGES } from '../../constants/errorMessages.js';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    try {
+      await loginService({ email, password });
+    } catch (err) {
+      handleLoginError(err);
+    }
+  };
+
+  const handleLoginError = (err) => {
+    if (err.kind === 'UNAUTHORIZED') {
+      setErrorMessage(ERROR_MESSAGES.INVALID_CREDENTIALS);
+      setPassword('');
+    } else {
+      setErrorMessage(ERROR_MESSAGES.UNEXPECTED);
+    }
   };
 
   return (
     <>
       <article className="login-container">
+        {errorMessage && (
+          <article className="login-error" role="alert">
+            <strong>{errorMessage}</strong>
+          </article>
+        )}
         <h2>Iniciar Sesión</h2>
         <form onSubmit={onSubmit}>
           <fieldset>
