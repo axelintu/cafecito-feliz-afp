@@ -33,4 +33,11 @@ function isTokenExpired(token) {
 	return Date.now() >= payload.exp * 1000;
 }
 
-export { saveToken, getToken, clearToken, decodeToken, isTokenExpired };
+export {
+	TOKEN_KEY,
+	saveToken,
+	getToken,
+	clearToken,
+	decodeToken,
+	isTokenExpired
+};

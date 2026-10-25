@@ -1,22 +1,25 @@
 import { useState } from 'react';
-import { login as loginService } from '../../services/authService.js';
-import { saveToken } from '../../utils/auth.js';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { ERROR_MESSAGES } from '../../constants/errorMessages.js';
 
 function Login() {
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
     setErrorMessage('');
 
     try {
-      const { token } = await loginService({ email, password });
-      saveToken(token);
+      await login({ email, password });
     } catch (err) {
       handleLoginError(err);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -68,7 +71,8 @@ function Login() {
 
           <button
             type="submit"
-            disabled={!email || !password}
+            disabled={!email || !password || submitting}
+            aria-busy={submitting}
           >Entrar</button>
         </form>
       </article>

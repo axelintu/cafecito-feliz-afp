@@ -1,8 +1,23 @@
+/*Pico Overrides*/
+.container-fluid {
+	max-width: 1450px;
+}
+
+
+/* Custom Cafecito Feliz Rules*/
 .page-container {
 	padding-top: 2em;
+	padding-right: var(--pico-spacing);
+	padding-left: var(--pico-spacing);
 }
 
 .cafecito-header {
+	min-height: 56px;
+	align-items: center;
+	display: flex;
+}
+
+.header-block {
 	border-bottom: 1px solid rgba(200, 200, 200, .5);
 }
 
@@ -14,6 +29,7 @@ h1.cafecito-logo {
 	margin-bottom: 0;
 	align-self: center;
 	position: relative;
+	padding-right: 0.5em;
 }
 
 /* Visible only to screen readers and text-based tools */
@@ -40,4 +56,23 @@ h1.cafecito-logo {
 	color: white;
 	padding: 1em;
 	margin-bottom: 1.5em;
+}
+
+.logged-in-greet {
+	align-self: center;
+}
+
+/* Menu */
+.desktop-nav {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.mobile-container {
+		display: none;
+	}
+
+	.desktop-nav {
+		display: flex;
+	}
 }
