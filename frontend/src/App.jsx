@@ -5,7 +5,7 @@ import Products from './pages/Products/Products.jsx';
 import Sales from './pages/Sales/Sales.jsx';
 import Login from './pages/Login/Login.jsx';
 import Layout from './layout/Layout.jsx';
-import ProtectedRoute from './pages/ProtectedRoute.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <AuthProvider>
         <Layout>
           <Routes>
-            <Route path="/login" element={<ProtectedRoute guestOnly={true}>
+            <Route path="/login" element={<ProtectedRoute guestOnly>
               <Login /></ProtectedRoute>} />
             <Route path="/" element={<ProtectedRoute>
               <Home /></ProtectedRoute>} />

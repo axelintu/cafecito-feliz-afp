@@ -1,4 +1,4 @@
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext.jsx';
 import { Navigate } from 'react-router';
 import { PAGE_REDIRECT_TO } from '../constants/pageRedirect.js';
 
@@ -7,12 +7,14 @@ function ProtectedRoute({
   redirectTo = '/login',
   guestOnly = false
 }) {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, isExpired } = useAuth();
   if (guestOnly && isAuthenticated)
     return <Navigate to={PAGE_REDIRECT_TO[user.role]}
       replace />;
   if (!guestOnly && !isAuthenticated)
-    return <Navigate to={redirectTo} replace />;
+    return <Navigate to={redirectTo} state={{
+      isExpired
+    }} replace />;
   return children;
 }
 
