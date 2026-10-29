@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext.jsx';
+import { useLocation } from 'react-router';
 import { ERROR_MESSAGES } from '../../constants/errorMessages.js';
 
 function Login() {
@@ -8,6 +9,8 @@ function Login() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const location = useLocation();
+  const sessionExpired = location.state?.isExpired;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +41,11 @@ function Login() {
         {errorMessage && (
           <article className="login-error" role="alert">
             <strong>{errorMessage}</strong>
+          </article>
+        )}
+        {sessionExpired && !errorMessage && (
+          <article className="login-error" role="alert">
+            <strong>{ERROR_MESSAGES.SESSION_EXPIRED}</strong>
           </article>
         )}
         <h2>Iniciar Sesión</h2>

@@ -33,11 +33,17 @@ function isTokenExpired(token) {
 	return Date.now() >= payload.exp * 1000;
 }
 
+function isSessionExpired() {
+	const token = getToken();
+	return !!token && isTokenExpired(token);
+}
+
 export {
 	TOKEN_KEY,
 	saveToken,
 	getToken,
 	clearToken,
 	decodeToken,
-	isTokenExpired
+	isTokenExpired,
+	isSessionExpired
 };

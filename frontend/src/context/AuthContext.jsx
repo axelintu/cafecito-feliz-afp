@@ -3,7 +3,6 @@ import { login as loginService } from '../services/authService.js';
 import {
   getToken,
   saveToken,
-  clearToken,
   isTokenExpired,
   decodeToken,
 } from '../utils/auth.js';
@@ -23,7 +22,6 @@ function getInitialUser() {
   const token = getToken();
   const payload = token && !isTokenExpired(token) ? decodeToken(token) : null;
   if (!payload) {
-    clearToken();
     return null;
   }
   return userFromPayload(payload);
