@@ -14,12 +14,21 @@ Este es un monorepo del proyecto de punto de venta Cafecito Feliz con los proyec
 │   └── src
 │       ├── config
 │       │   ├── db.conf.js
-│       │   └── seed.js
+│       │   ├── seed.js
+│       │   └── userSeed.js
 │       ├── controllers
 │       ├── models
 │       │   └── Product.js
 │       ├── routes
 │       └── services
+├── bruno
+│   ├── auth
+│   ├── bruno.json
+│   ├── collection.bru
+│   ├── environments
+│   │   └── local.bru
+│   ├── health.bru
+│   └── not-found.bru
 ├── frontend
 │   ├── .env.example
 │   ├── eslint.config.js
@@ -69,7 +78,8 @@ Este es un monorepo del proyecto de punto de venta Cafecito Feliz con los proyec
 
 - Backend: `cd backend && npm i`
 - Frontend: `cd frontend && npm i`
-- Script para llenar la base de datos: `cd backend && npm run seed`.
+- Script para llenar los productos de la base de datos: `cd backend && npm run seed`.
+- Script para llenar los usuarios de la base de datos: `cd backend && npm run seed:users`.
 
 ## Configurar variables
 
@@ -84,7 +94,19 @@ PORT=3001
 FRONTEND_URL=http://localhost:3000
 MONGODB_URI=mongodb://localhost:27017/cafecito-pos
 NODE_ENV=development
+JWT_SECRET=agrega-tu-secreto
+JWT_EXPIRES_IN=8h
+SEED_SELLER_PASSWORD=cambia-esta-contrasena
+SEED_ADMIN_PASSWORD=cambia-esta-contrasena
 ```
+
+Genera el secreto del JWT_SECRET para `.env`. Debes generarlo en cada máquina usando este comando:
+
+```
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+```
+
+Agrega las contraseñas que se usarán para las pruebas en SEED_SELLER_PASSWORD y SEED_ADMIN_PASSWORD al archivo .env, para popular con el seed.
 
 En desarrollo la API vive en http://localhost:3001/api. La raíz, 
 http://localhost:3001/, responde 404 a propósito: no hay ruta declarada ahí.
@@ -125,6 +147,30 @@ Instala la dependencia y corre desde la raíz:
 npm i
 npm run dev
 ```
+
+## Probar la API
+
+Los requests de la API están en una colección de [Bruno](https://www.usebruno.com)
+en `bruno/`, con un archivo por caso: el exitoso y uno por cada error de los
+criterios de la historia. Para usarla, abre la carpeta en Bruno
+(Open Collection) y elige el environment `local`. Corre primero
+`auth/Login seller`: guarda el token y los demás requests lo usan.
+
+Para correr toda la colección desde la terminal, con el backend levantado y
+las dependencias de la raíz instaladas (`npm i`), desde la raíz:
+
+```shell
+npm run test:api
+```
+
+Para correr solo una carpeta o un request, agrega su ruta dentro de `bruno/`:
+
+```shell
+npm run test:api -- auth
+npm run test:api -- health.bru
+```
+
+Cada request trae sus tests; si alguno falla, el comando termina con error.
 
 ## Estilo de código
 

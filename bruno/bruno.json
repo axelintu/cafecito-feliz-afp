@@ -1,0 +1,6 @@
+{
+  "version": "1",
+  "name": "Cafecito Feliz",
+  "type": "collection",
+  "ignore": ["node_modules", ".git"]
+}

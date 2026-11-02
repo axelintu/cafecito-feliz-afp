@@ -1,0 +1,27 @@
+meta {
+  name: Login malformed JSON
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/auth/login
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:text {
+  { "email": "vendedor@cafecitofeliz.com", "password": }
+}
+
+tests {
+  test("responds 400 with a JSON error, not an HTML stack", function () {
+    expect(res.status).to.equal(400);
+    expect(res.headers["content-type"]).to.include("application/json");
+    expect(res.body.error).to.be.a("string");
+  });
+}
