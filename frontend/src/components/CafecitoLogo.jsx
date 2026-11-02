@@ -1,11 +1,15 @@
+/* eslint-disable @stylistic/max-len -- SVG path data can't be wrapped */
 /**
  * CafecitoLogo — smiling coffee cup icon + "Cafecito Feliz" wordmark
  * (Fraunces 500 italic, converted to paths) in a single SVG.
  *
  * Props
- *  - height:      rendered height (number or CSS length). Width follows the aspect ratio.
- *  - showText:    false renders the icon only (handy for small screens / favicons).
- *  - textColor:   wordmark color. Defaults to currentColor, so it follows the parent's CSS color.
+ *  - height:      rendered height (number or CSS length). Width follows the
+ *                 aspect ratio.
+ *  - showText:    false renders the icon only (handy for small screens /
+ *                 favicons).
+ *  - textColor:   wordmark color. Defaults to currentColor, so it follows the
+ *                 parent's CSS color.
  *  - iconBg:      circle background color.
  *  - iconColor:   cup / steam / face color.
  *  - title:       accessible label.
@@ -46,7 +50,12 @@ const CafecitoLogo = ({
       <g transform={`translate(0 ${TEXT_Y}) scale(${ICON / 512})`}>
         <g transform="translate(256 256) scale(0.898) translate(-368 -385)">
           <circle cx="368" cy="385" r="285" fill={iconBg} />
-          <g fill="none" stroke={iconColor} strokeLinecap="round" strokeLinejoin="round">
+          <g
+            fill="none"
+            stroke={iconColor}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="M323 203 C296 228 318 248 328 268 C338 288 330 300 326 306" strokeWidth="18" />
             <path d="M376 178 C350 210 372 238 384 262 C396 286 388 300 382 306" strokeWidth="18" />
             <path d="M220 343 H490 V400 A135 135 0 0 1 220 400 Z" strokeWidth="26" />
