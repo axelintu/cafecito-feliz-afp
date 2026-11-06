@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import modelJsonOptions from './modelJsonOptions.js';
 
 const productSchema = new mongoose.Schema(
 	{
@@ -25,7 +26,10 @@ const productSchema = new mongoose.Schema(
 			default: true,
 		},
 	},
-	{ timestamps: true }
+	{
+		timestamps: true,
+		toJSON: modelJsonOptions,
+	}
 );
 
 const Product = mongoose.model('Product', productSchema);
