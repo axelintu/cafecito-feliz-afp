@@ -28,7 +28,10 @@ function ProductsList({ loading, error, products }) {
               return (
                 <tr key={product.id} aria-disabled={ product.stock === 0 }>
                   <td>{product.name}</td>
-                  <td>{product.price}</td>
+                  <td>{new Intl.NumberFormat('es-MX', {
+                    style: 'currency',
+                    currency: 'MXN'
+                  }).format(product.price)}</td>
                   <td>{product.stock === 0
                     ? 'Sin stock'
                     : product.stock
