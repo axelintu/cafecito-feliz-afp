@@ -76,3 +76,10 @@ h1.cafecito-logo {
 		display: flex;
 	}
 }
+
+tr[aria-disabled="true"] td {
+	opacity: 0.5;
+	color: var(--pico-muted-color);
+	pointer-events: none;
+	user-select: none;
+}

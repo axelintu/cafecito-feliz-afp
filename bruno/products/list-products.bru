@@ -1,0 +1,47 @@
+meta {
+  name: List products
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/products
+  body: none
+  auth: none
+}
+
+tests {
+  test("responds 200 with data and total", function () {
+    expect(res.status).to.equal(200);
+    expect(res.body.data).to.be.an("array");
+    expect(res.body.total).to.equal(res.body.data.length);
+  });
+
+  test("each product has id, name, price and stock, without _id or __v", function () {
+    for (const product of res.body.data) {
+      expect(product.id).to.be.a("string");
+      expect(product.name).to.be.a("string");
+      expect(product.price).to.be.a("number");
+      expect(product.stock).to.be.a("number");
+      expect(product).to.not.have.property("_id");
+      expect(product).to.not.have.property("__v");
+    }
+  });
+
+  test("only returns active products", function () {
+    for (const product of res.body.data) {
+      expect(product.isActive).to.equal(true);
+    }
+  });
+
+  test("keeps products with stock 0 in the list", function () {
+    const outOfStock = res.body.data.filter((product) => product.stock === 0);
+    expect(outOfStock).to.have.lengthOf.at.least(1);
+  });
+
+  test("is sorted by name", function () {
+    const names = res.body.data.map((product) => product.name);
+    const sorted = [...names].sort((a, b) => a.localeCompare(b, "es"));
+    expect(names).to.eql(sorted);
+  });
+}

@@ -16,6 +16,7 @@ export default defineConfig([
 		rules: {
 			'@stylistic/quotes': ['error', 'single', { avoidEscape: true }],
 			'@stylistic/semi': ['error', 'always'],
+			'@stylistic/indent': ['warn', 'tab'],
 			'@stylistic/max-len': ['warn', {
 				code: 80,
 				ignoreUrls: true,
