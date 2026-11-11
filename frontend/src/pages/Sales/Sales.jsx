@@ -26,7 +26,7 @@ function ProductsList({ loading, error, products }) {
           {
             products.map((product) => {
               return (
-                <tr key={product.id} >
+                <tr key={product.id} aria-disabled={ product.stock === 0 }>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
                   <td>{product.stock === 0
@@ -34,7 +34,8 @@ function ProductsList({ loading, error, products }) {
                     : product.stock
                   }</td>
                   <td>
-                    <button>Agregar</button>
+                    <button disabled={product.stock === 0}>
+                      Agregar</button>
                   </td>
                 </tr>
               );
