@@ -1,0 +1,30 @@
+meta {
+  name: Search "te"
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/products?q=te
+  body: none
+  auth: none
+}
+
+params:query {
+  q: te
+}
+
+tests {
+  test("responds 200 with data and total", function () {
+    expect(res.status).to.equal(200);
+    expect(res.body.data).to.be.an("array");
+    expect(res.body.total).to.equal(res.body.data.length);
+  });
+
+  // Without accent "te" finds "Té Verde". It also finds "Café Latte",
+  // because "Latte" contains "te": the search is "contains", not "starts with".
+  test("finds Té Verde and Café Latte", function () {
+    const names = res.body.data.map((product) => product.name);
+    expect(names).to.eql(["Café Latte", "Té Verde"]);
+  });
+}
