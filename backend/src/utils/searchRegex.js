@@ -1,6 +1,6 @@
 // Escapes RegExp special characters so they match literally.
 // Not RegExp.escape(): it also escapes some letters as \xNN,
-// and the vowel step below breaks them ("jugo" → \x6augo).
+// and the letter step below breaks them ("jugo" → \x6augo).
 function escapeRegex(text) {
 	return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -13,21 +13,22 @@ function buildSearchRegex(searchInput) {
 		.normalize('NFD')
 		.replace(/\p{Diacritic}/gu, '');
 
-	// 2. Escape before adding the vowel classes,
+	// 2. Escape before adding the letter classes,
 	// or their [ ] would be escaped too
 	const escaped = escapeRegex(unaccented);
 
-	// 3. Match each vowel with its accented forms
-	const vowelsMap = {
+	// 3. Match each vowel and n with its accented forms
+	const accentMap = {
 		a: '[aáàäâ]',
 		e: '[eéèëê]',
 		i: '[iíìïî]',
 		o: '[oóòöô]',
-		u: '[uúùüû]'
+		u: '[uúùüû]',
+		n: '[nñ]'
 	};
 
-	const finalPattern = escaped.replace(/[aeiou]/gi, (vowel) => {
-		return vowelsMap[vowel.toLowerCase()];
+	const finalPattern = escaped.replace(/[aeioun]/gi, (letter) => {
+		return accentMap[letter.toLowerCase()];
 	});
 
 	// 'i' ignores case, also for accented letters
