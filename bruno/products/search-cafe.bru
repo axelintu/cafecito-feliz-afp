@@ -1,0 +1,28 @@
+meta {
+  name: Search "cafe"
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/products?q=cafe
+  body: none
+  auth: none
+}
+
+params:query {
+  q: cafe
+}
+
+tests {
+  test("responds 200 with data and total", function () {
+    expect(res.status).to.equal(200);
+    expect(res.body.data).to.be.an("array");
+    expect(res.body.total).to.equal(res.body.data.length);
+  });
+
+  test("finds only Café Americano and Café Latte", function () {
+    const names = res.body.data.map((product) => product.name);
+    expect(names).to.eql(["Café Americano", "Café Latte"]);
+  });
+}

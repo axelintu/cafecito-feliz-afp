@@ -1,0 +1,28 @@
+meta {
+  name: Search "pizza"
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/products?q=pizza
+  body: none
+  auth: none
+}
+
+params:query {
+  q: pizza
+}
+
+tests {
+  test("responds 200 with data and total", function () {
+    expect(res.status).to.equal(200);
+    expect(res.body.data).to.be.an("array");
+    expect(res.body.total).to.equal(res.body.data.length);
+  });
+
+  test("finds nothing: data is [] and total is 0", function () {
+    expect(res.body.data).to.eql([]);
+    expect(res.body.total).to.equal(0);
+  });
+}

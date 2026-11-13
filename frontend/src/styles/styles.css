@@ -83,3 +83,11 @@ tr[aria-disabled="true"] td {
 	pointer-events: none;
 	user-select: none;
 }
+
+.product-list-action {
+	text-align: right;
+}
+
+.search-term {
+	font-weight: bold;
+}
