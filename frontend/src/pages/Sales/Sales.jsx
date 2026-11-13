@@ -1,15 +1,28 @@
 import { useEffect, useState } from 'react';
 import { getProducts } from '../../services/productService.js';
 import { ERROR_MESSAGES } from '../../constants/errorMessages.js';
+import { PRODUCT_MESSAGES } from '../../constants/productMessages.js';
 
-function ProductsList({ loading, error, products }) {
+function SearchTerm({search}) {
+  return <span className="search-term">"{search}"</span>;
+};
+
+function ProductsList({ loading, error, products, search }) {
   if (loading) return <div>
-    <p>Cargando productos...</p>
+    <p>{PRODUCT_MESSAGES.LOADING}</p>
     <progress />
   </div>;
   if (error) return <article>{ error }</article>;
-  if (products.length === 0) {
-    return <article> {ERROR_MESSAGES.PRODUCTS_EMPTY } </article >;
+  if (products.length === 0 && search) {
+    return <article>
+      { PRODUCT_MESSAGES.SEARCH_EMPTY }
+      <SearchTerm search={ search } />
+    </article>;
+  }
+  if (products.length === 0 && !search) {
+    return <article>
+      {PRODUCT_MESSAGES.EMPTY}
+    </article>;
   }
   return (
     <>
@@ -60,17 +73,21 @@ function Sales() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState('');
+  const term = search.trim();
+
+  function handleSearch(e) {
+    setSearch(e.target.value);
+  }
 
   useEffect(() => {
     let cancelled = false;
 
     const loadProducts = async () => {
       try {
-        setLoading(true);
         setError(null);
-        const response = await getProducts();
+        const response = await getProducts(term);
         if (cancelled) return;
-
         setProducts(response.data);
       } catch (err) {
         if (!cancelled) setError(getErrorMessage(err));
@@ -78,14 +95,30 @@ function Sales() {
         if (!cancelled) setLoading(false);
       }
     };
-    loadProducts();
-    return () => { cancelled = true; };
-  }, []);
+
+    const searchDebounce = setTimeout(loadProducts, term ? 300 : 0);
+    return () => {
+      cancelled = true;
+      clearTimeout(searchDebounce);
+    };
+  }, [term]);
 
   return (
     <>
       <h1>Ventas</h1>
-      <ProductsList loading={loading} error={error} products={products} />
+
+      <form role="search" className="group"
+        onSubmit={(e) => e.preventDefault()}>
+        <input type="search" aria-label="Buscar productos"
+          placeholder="Busca productos"
+          value={search}
+          onChange={handleSearch}
+        />
+      </form>
+
+      <ProductsList loading={loading} error={error} products={products}
+        search={term}
+      />
     </>
   );
 }
