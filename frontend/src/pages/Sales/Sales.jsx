@@ -88,8 +88,8 @@ function Sales() {
       try {
         setError(null);
         const response = await getProducts(term);
-        if (!term) setHasProducts(response.total > 0);
         if (cancelled) return;
+        if (!term) setHasProducts(response.total > 0);
         setProducts(response.data);
       } catch (err) {
         if (!cancelled) setError(getErrorMessage(err));
