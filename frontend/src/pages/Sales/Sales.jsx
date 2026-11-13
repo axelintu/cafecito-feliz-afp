@@ -32,7 +32,7 @@ function ProductsList({ loading, error, products, search }) {
             <th>Producto</th>
             <th>Precio</th>
             <th>Existencia</th>
-            <th>Acción</th>
+            <th className="product-list-action">Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -49,7 +49,7 @@ function ProductsList({ loading, error, products, search }) {
                     ? 'Sin stock'
                     : product.stock
                   }</td>
-                  <td>
+                  <td className="product-list-action">
                     <button disabled={product.stock === 0}>
                       Agregar</button>
                   </td>

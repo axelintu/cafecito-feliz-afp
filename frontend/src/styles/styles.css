@@ -84,6 +84,10 @@ tr[aria-disabled="true"] td {
 	user-select: none;
 }
 
+.product-list-action {
+	text-align: right;
+}
+
 .search-term {
 	font-weight: bold;
 }
