@@ -66,7 +66,7 @@ function ProductsList({ loading, error, products, search }) {
 const getErrorMessage = (err) => {
   return err.kind === 'NETWORK'
     ? ERROR_MESSAGES.NETWORK
-    : ERROR_MESSAGES.PRODUCTS_LOADING_ERROR;
+    : PRODUCT_MESSAGES.LOADING_ERROR;
 };
 
 function Sales() {
