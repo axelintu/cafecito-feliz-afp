@@ -73,6 +73,7 @@ function Sales() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
+  const [hasProducts, setHasProducts] = useState(false);
   const [search, setSearch] = useState('');
   const term = search.trim();
 
@@ -87,6 +88,7 @@ function Sales() {
       try {
         setError(null);
         const response = await getProducts(term);
+        if (!term) setHasProducts(response.total > 0);
         if (cancelled) return;
         setProducts(response.data);
       } catch (err) {
@@ -113,6 +115,7 @@ function Sales() {
           placeholder="Busca productos"
           value={search}
           onChange={handleSearch}
+          disabled={loading || !hasProducts}
         />
       </form>
 
